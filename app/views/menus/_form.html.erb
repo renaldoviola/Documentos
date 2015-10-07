@@ -1,0 +1,28 @@
+<%= simple_form_for @menu , url: {action: action} do |f| %>
+  <% if @menu.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@menu.errors.count, "error") %> prohibited this menu from being saved:</h2>
+
+      <ul>
+      <% @menu.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class="form-group">
+
+
+
+    <%= f.input :data%>
+    Dia da Semana: <%= select_tag(:weekday, options_for_select([['Domingo', 'Domingo'], ['Segunda-feira', 'Segunda-feira'], ['Terça-feira', 'Terça-feira'], ['Quarta-feira', 'Quarta-feira'], ['Quinta-feira', 'Quinta-feira'], ['Sexta-feira', 'Sexta-feira'], ['Sábado']]))  %>
+     <%= f.input :price, label: 'Preço' %>
+    <%= f.input :status, label: 'Status' %>
+    <%= f.hidden_field :establishment_id, label: 'Estabelecimento' %>
+</div>
+
+ <%= f.button :submit , :class => "btn btn-success" %>
+
+<% end %>

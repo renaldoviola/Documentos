@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Pratos</h1>
+
+<form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+          <input type="text" class="form-control" placeholder="Localizar...">
+      </div>
+      <button type="submit" class="btn btn-default">Consultar</button>
+</form>
+<br>
+
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Prato</th>
+      <th>Status</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.plate %></td>
+        <td><%= item.status %></td>
+
+        <td><%= link_to 'Remover', @item, method: :delete, data: { confirm: 'Tem certeza que deseja remover ?' }, :class => "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo', new_establishment_menu_item_path %>

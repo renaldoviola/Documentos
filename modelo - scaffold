@@ -1,0 +1,6 @@
+
+rails generate scaffold Establishment name:string city:string state:string neighborhood:string address:string zipcode:integer avatar:string status:boolean creation:date
+
+rails generate scaffold Menu data:datetime weekday:string price:string status:boolean
+
+rails generate scaffold Item plate:string status:boolean

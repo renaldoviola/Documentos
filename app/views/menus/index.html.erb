@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+         <div class="row">
+              <div class="col-md-2"><%= image_tag(@establishment.avatar.url(:thumb))%></div>
+              <div class="col-md-4">
+                  <p><h3>Cardápios - <%= @establishment.name %></h3></p>
+              </div>
+         </div>
+    </div>
+
+<form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+          <input type="text" class="form-control" placeholder="Localizar...">
+      </div>
+      <button type="submit" class="btn btn-default">Consultar</button>
+</form>
+<br>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Dia da Semana</th>
+      <th>Preço</th>
+      <th>Status</th>
+      <th>Empresa</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @menus.each do |menu| %>
+      <tr>
+        <td><%= menu.data %></td>
+        <td><%= menu.weekday %></td>
+        <td><%= menu.price %></td>
+        <td><%= menu.status %></td>
+        <td><%= menu.establishment_id %></td>
+        <td><%= link_to 'Visualizar', establishment_menu_items_path(@establishment.id, menu.id), :class => "btn btn-success"%></td>
+        <td><%= link_to 'Editar', edit_establishment_menu_path(@establishment.id, menu.id) , :class => "btn btn-primary" %></td>
+        <td><%= link_to 'Remover', @menu, method: :delete, data: { confirm: 'Tem certeza que deseja remover ?' }, :class => "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo', new_establishment_menu_path%>

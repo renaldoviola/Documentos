@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @state.name %>
+</p>
+
+<p>
+  <strong>Uf:</strong>
+  <%= @state.uf %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @state.country.name %>
+</p>
+
+<%= link_to 'Alterar', edit_state_path(@state) %> |
+<%= link_to 'Voltar', states_path %>

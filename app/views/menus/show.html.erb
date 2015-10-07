@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @menu.data %>
+</p>
+
+<p>
+  <strong>Weekday:</strong>
+  <%= @menu.weekday %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @menu.price %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @menu.status %>
+</p>
+<p>
+  <strong>Estabelecimento:</strong>
+  <%= @menu.establishment_id %>
+</p>
+
+<%= link_to 'Voltar', establishment_menus_path %>

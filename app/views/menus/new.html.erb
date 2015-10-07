@@ -1,0 +1,5 @@
+<h1>Novo Cardápio</h1>
+
+<%= render  :partial  => 'form', :locals => { :action => "create" } %>
+
+<%= link_to 'Voltar', establishment_menus_path(@establishment) %>

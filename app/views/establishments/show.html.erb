@@ -1,0 +1,14 @@
+<div class="container">
+         <div class="row">
+              <div class="col-md-2"><%= image_tag(@establishment.avatar.url(:thumb))%></div>
+              <div class="col-md-4">
+                  <p><h3><%= @establishment.name %></h3></p>
+                  <p><h4><%= @establishment.city %> - <%= @establishment.state %></h4></p>
+              </div>
+         </div>
+    </div>
+
+
+
+<%= link_to 'Editar', edit_establishment_path(@establishment) %> |
+<%= link_to 'Voltar', establishments_path %>

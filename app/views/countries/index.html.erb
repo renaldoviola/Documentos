@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Paises</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Sigla</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @countries.each do |country| %>
+      <tr>
+        <td><%= country.name %></td>
+        <td><%= country.sigla %></td>
+        <td><%= link_to 'Visualizar', country %></td>
+        <td><%= link_to 'Alterar', edit_country_path(country) %></td>
+        <td><%= link_to 'Remover', country, method: :delete, data: { confirm: 'Tem certeza que deseja remover?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Country', new_country_path %>

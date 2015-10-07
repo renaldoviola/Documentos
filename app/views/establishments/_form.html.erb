@@ -1,0 +1,29 @@
+<%= simple_form_for @establishment, :html => { :multipart => true },
+    wrapper_mappings: {
+    file: :vertical_file_input,
+    boolean: :vertical_boolean
+  } do |f| %>
+  <% if @establishment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@establishment.errors.count, "error") %> prohibited this establishment from being saved:</h2>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+
+    <%= f.input :name, label: 'Estabelecimento' %>
+    <%= f.input :city, label: 'Cidade'%>
+    <%= f.input :state, label: 'Estado' %>
+    <%= f.input :neighborhood, label: 'Bairro' %>
+    <%= f.input :address, label: 'Endereço' %>
+    <%= f.input :zipcode, :required => true,
+            :input_html => { :maxlength => 9, :"data-mask" => "99999-999" } %>
+    <%= f.input :avatar, as: :file, wrapper: :vertical_file_input %>
+    <%= f.input :status, label: 'Status' %>
+    </div>
+
+
+  <%= f.button :submit , :class => "btn btn-success" %>
+
+
+<% end %>

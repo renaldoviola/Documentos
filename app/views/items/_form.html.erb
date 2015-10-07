@@ -1,0 +1,25 @@
+<%= simple_form_for @item , url: {action: action} do |f| %>
+  <% if @item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class="form-inline">
+
+    <%= f.input :plate, label: 'Refeição ' %>
+    <%= f.input :status, label: 'Status ' %>
+    <br>
+    <%= f.hidden_field :menu_id, label: 'Menu' %>
+</div>
+
+ <%= f.button :submit , :class => "btn btn-success" %>
+
+<% end %>

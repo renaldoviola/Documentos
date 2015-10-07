@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  data: 2015-08-13 23:37:46
+  weekday: MyString
+  price: MyString
+  status: false
+
+two:
+  data: 2015-08-13 23:37:46
+  weekday: MyString
+  price: MyString
+  status: false
