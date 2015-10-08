@@ -7,8 +7,6 @@ gem 'rails', '4.2.3'
 #gem 'mysql2', '~> 0.3.18'
 gem 'rails_12factor', group: :production
 
-gem 'sqlite3'
-
 gem 'pg'
 
 ## Use SCSS for stylesheets
