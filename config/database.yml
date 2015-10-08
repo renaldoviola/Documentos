@@ -1,15 +1,15 @@
 development:
   adapter: postgresql
   encoding: utf8
+  pool: 5
   database: projeto_development
   username: postgres
   password: system
-  host: localhost
 
 test:
   adapter: postgresql
   encoding: utf8
+  pool: 5
   database: projeto_test
   username: postgres
   password: system
-  host: localhost
