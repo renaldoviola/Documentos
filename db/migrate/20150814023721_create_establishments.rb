@@ -1,5 +1,5 @@
 class CreateEstablishments < ActiveRecord::Migration
-  def
+  def change
     create_table :establishments do |t|
       t.string :name
       t.string :city
