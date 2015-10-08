@@ -14,11 +14,11 @@ Rails.application.routes.draw do
   resources :pais
   resources :establishments
 
-  get 'paginainicial/homepage'
+  #get 'paginainicial/homepage'
 
 
-  #root :to => 'establishments#index'
-    root :to => 'paginainicial#homepage'
+  root :to => 'establishments#index'
+    #root :to => 'paginainicial#homepage'
 
   resources :establishments do
     resources :menus do
