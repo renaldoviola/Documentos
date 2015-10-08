@@ -1,0 +1,16 @@
+Comandos importantes heroku
+
+
+heroku run rake db:create
+heroku run rake db:migrate
+// Log em tempo real
+heroku logs --source app --tail
+
+// para adicionar alterações ao git
+git add .
+
+// Commit alterações para subir para o heroku
+git commit -m 'comentário'
+
+// publicar no heroku
+ git push heroku master
