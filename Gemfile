@@ -36,6 +36,7 @@ gem 'simple_form'
 gem 'bcrypt'
 
 #gem 'rails_12factor', group: "production"
+gem 'devise'
 
 gem 'protected_attributes'
 # Use ActiveModel has_secure_password
