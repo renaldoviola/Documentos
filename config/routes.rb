@@ -1,24 +1,27 @@
 Rails.application.routes.draw do
 
+  devise_for :users
+  #devise_for :users
   #get 'users/new'
 
   #devise_for :users, controllers: { :registrations =>'registration'}
 
-  resources :cities
-  resources :states
+  devise_scope :user do
+    get '/users/establishments' => 'users/index'
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
+
   resources :countries
-  resources :cidades
-  resources :cities
-  resources :cities
   resources :states
+  resources :cities
   resources :pais
   resources :establishments
 
   #get 'paginainicial/homepage'
 
 
-  root :to => 'establishments#index'
-    #root :to => 'paginainicial#homepage'
+  #root :to => 'establishments#index'
+    root :to => 'paginainicial#homepage'
 
   resources :establishments do
     resources :menus do

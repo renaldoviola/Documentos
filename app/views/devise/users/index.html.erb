@@ -1,0 +1,36 @@
+
+<h1>Estabelecimentos do @user.username</h1>
+<form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+          <input type="text" class="form-control" placeholder="Localizar...">
+      </div>
+      <button type="submit" class="btn btn-default">Consultar</button>
+</form>
+<br>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Estabelecimento</th>
+      <th>Cidade</th>
+      <th>Estado</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user.establishment.each do |establishment| %>
+      <tr>
+        <td><%= image_tag(establishment.avatar.url(:thumb))%></td>
+        <td><%= establishment.name %></td>
+        <td><%= establishment.city %></td>
+        <td><%= establishment.state %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+<%= link_to 'Novo Estabelecimento', new_establishment_path  %>

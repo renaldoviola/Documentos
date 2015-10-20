@@ -11,74 +11,100 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826034601) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20151015030039) do
 
   create_table "cities", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "state_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",       limit: 255
+    t.integer  "state_id",   limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "cities", ["state_id"], name: "index_cities_on_state_id", using: :btree
 
   create_table "countries", force: :cascade do |t|
-    t.string   "name"
-    t.string   "sigla"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",       limit: 255
+    t.string   "sigla",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "establishments", force: :cascade do |t|
-    t.string   "name"
-    t.string   "city"
-    t.string   "state"
-    t.string   "neighborhood"
-    t.string   "address"
-    t.integer  "zipcode"
-    t.string   "avatar"
+    t.string   "name",                limit: 255
+    t.string   "city",                limit: 255
+    t.string   "state",               limit: 255
+    t.string   "neighborhood",        limit: 255
+    t.string   "address",             limit: 255
+    t.integer  "zipcode",             limit: 4
+    t.string   "avatar",              limit: 255
     t.boolean  "status"
-    t.date     "creation"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.integer  "city_id"
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.datetime "creation"
+    t.integer  "city_id",             limit: 4
+    t.string   "avatar_file_name",    limit: 255
+    t.string   "avatar_content_type", limit: 255
+    t.integer  "avatar_file_size",    limit: 4
     t.datetime "avatar_updated_at"
+    t.integer  "user_id",             limit: 4
   end
 
   create_table "items", force: :cascade do |t|
-    t.string   "plate"
+    t.string   "plate",      limit: 255
     t.boolean  "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "menu_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "menu_id",    limit: 4
   end
 
   create_table "menus", force: :cascade do |t|
     t.datetime "data"
-    t.string   "weekday"
-    t.string   "price"
+    t.string   "weekday",          limit: 255
+    t.string   "price",            limit: 255
     t.boolean  "status"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.integer  "establishment_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "establishment_id", limit: 4
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "title",       limit: 255
+    t.text     "description", limit: 65535
+    t.string   "image_url",   limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "states", force: :cascade do |t|
-    t.string   "name"
-    t.string   "uf"
-    t.integer  "country_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",       limit: 255
+    t.string   "uf",         limit: 255
+    t.integer  "country_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "states", ["country_id"], name: "index_states_on_country_id", using: :btree
 
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.string   "username",               limit: 255
+    t.integer  "user_id",                limit: 4
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["user_id"], name: "index_users_on_user_id", using: :btree
+
   add_foreign_key "cities", "states"
   add_foreign_key "states", "countries"
+  add_foreign_key "users", "users"
 end

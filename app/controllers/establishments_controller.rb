@@ -1,8 +1,13 @@
 class EstablishmentsController < ApplicationController
   before_action :set_establishment, only: [:show, :edit, :update, :destroy]
+
+    layout 'system'
+
   #before_action :authenticate_user!, :except => [:index]
   # GET /establishments
   # GET /establishments.json
+
+
   def index
     @establishments = Establishment.all
   end
@@ -24,7 +29,9 @@ class EstablishmentsController < ApplicationController
   # POST /establishments
   # POST /establishments.json
   def create
+
     @establishment = Establishment.new(establishment_params)
+    @establishment.user_id = current_user.id
 
     respond_to do |format|
       if @establishment.save

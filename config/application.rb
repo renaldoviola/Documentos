@@ -23,5 +23,14 @@ module Projeto
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
     config.serve_static_files = true
+
+    config.to_prepare do
+    Devise::SessionsController.layout "system"
+    Devise::RegistrationsController.layout "system"
+    Devise::ConfirmationsController.layout "system"
+    Devise::UnlocksController.layout "system"
+    Devise::PasswordsController.layout "system"
+end
+
   end
 end

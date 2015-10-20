@@ -1,1 +1,1 @@
-json.extract! @menu, :id, :data, :weekday, :price, :status, :created_at, :updated_at
+json.(@menu, :id, :data, :weekday, :price, :status, :establishment_id)

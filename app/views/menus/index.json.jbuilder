@@ -1,4 +1,6 @@
-json.array!(@menus) do |menu|
-  json.extract! menu, :id, :data, :weekday, :price, :status, :establishment_id
-  json.url menu_url(menu, format: :json)
+json.array!(@establishments) do |json, establishment|
+  json.(establishment, :id, :name, :city, :state, :neighborhood, :address, :zipcode, :avatar, :status, :creation)
+    json.menus establishment.menus do |json, menu|
+        json.(@menu, :id, :data, :weekday, :price, :status, :establishment_id)
+    end
 end
