@@ -20,7 +20,7 @@
   </thead>
 
   <tbody>
-    <% @user.establishment.each do |establishment| %>
+    <% @user.establishments.each do |establishment| %>
       <tr>
         <td><%= image_tag(establishment.avatar.url(:thumb))%></td>
         <td><%= establishment.name %></td>

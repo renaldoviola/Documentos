@@ -1,5 +1,6 @@
 class EstablishmentsController < ApplicationController
   before_action :set_establishment, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
     layout 'system'
 
@@ -10,12 +11,14 @@ class EstablishmentsController < ApplicationController
 
   def index
     @establishments = Establishment.all
+    @establishments = @products.find_by_name(params[:find_by_name]) if params[:find_by_name].present?
   end
 
   # GET /establishments/1
   # GET /establishments/1.json
   def show
   end
+
 
   # GET /establishments/new
   def new

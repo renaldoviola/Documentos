@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   resources :pais
   resources :establishments
 
+
+#get "/findByName" => 'establishments#findByName'
+
   #get 'paginainicial/homepage'
 
 

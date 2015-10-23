@@ -47,7 +47,7 @@ config.action_mailer.smtp_settings = {
     authentication: "plain",
     enable_starttls_auto: true,
     user_name: ENV["violarenaldo@gmail.com"],
-    password: ENV["123Juka123"]
+    password: ENV["password"]
 }
 
   # Raises error for missing translations
