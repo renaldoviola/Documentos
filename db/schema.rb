@@ -38,15 +38,14 @@ ActiveRecord::Schema.define(version: 20151015030039) do
     t.integer  "zipcode",             limit: 4
     t.string   "avatar",              limit: 255
     t.boolean  "status"
+    t.date     "creation"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
-    t.datetime "creation"
     t.integer  "city_id",             limit: 4
     t.string   "avatar_file_name",    limit: 255
     t.string   "avatar_content_type", limit: 255
     t.integer  "avatar_file_size",    limit: 4
     t.datetime "avatar_updated_at"
-    t.integer  "user_id",             limit: 4
   end
 
   create_table "items", force: :cascade do |t|
@@ -65,14 +64,6 @@ ActiveRecord::Schema.define(version: 20151015030039) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.integer  "establishment_id", limit: 4
-  end
-
-  create_table "products", force: :cascade do |t|
-    t.string   "title",       limit: 255
-    t.text     "description", limit: 65535
-    t.string   "image_url",   limit: 255
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
   end
 
   create_table "states", force: :cascade do |t|
@@ -96,15 +87,11 @@ ActiveRecord::Schema.define(version: 20151015030039) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
-    t.string   "username",               limit: 255
-    t.integer  "user_id",                limit: 4
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-  add_index "users", ["user_id"], name: "index_users_on_user_id", using: :btree
 
   add_foreign_key "cities", "states"
   add_foreign_key "states", "countries"
-  add_foreign_key "users", "users"
 end
