@@ -15,7 +15,7 @@ class Api::V1::MenusController < ApplicationController
 
   # GET /api/v1/menus/new
   def new
-    @api_v1_menu = Api::V1::Menu.new
+    @api_v1_menu = Menu.new
   end
 
   # GET /api/v1/menus/1/edit
@@ -27,25 +27,24 @@ class Api::V1::MenusController < ApplicationController
   def create
     @api_v1_menu = Menu.new(api_v1_menu_params)
 
-    
       if @api_v1_menu.save
         render json: @api_v1_menu
       else
         render json: @api_v1_menu.errors
       end
-    
+
   end
 
   # PATCH/PUT /api/v1/menus/1
   # PATCH/PUT /api/v1/menus/1.json
   def update
-    
+
       if @api_v1_menu.update(api_v1_menu_params)
        render json: @api_v1_menu
       else
         render json: @api_v1_menu.errors
       end
-    
+
   end
 
   # DELETE /api/v1/menus/1
