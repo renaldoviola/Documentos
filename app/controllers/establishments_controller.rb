@@ -10,8 +10,12 @@ class EstablishmentsController < ApplicationController
 
 
   def index
-    @establishments = Establishment.all
-    @establishments = @products.find_by_name(params[:find_by_name]) if params[:find_by_name].present?
+    if current_user.email == 'admin@cardapcom.com'
+      @establishments = Establishment.all
+      @establishments = @products.find_by_name(params[:find_by_name]) if params[:find_by_name].present?
+    else
+      @establishments = current_user.establishments
+    end
   end
 
   # GET /establishments/1
